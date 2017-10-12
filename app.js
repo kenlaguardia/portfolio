@@ -17,7 +17,8 @@ var commentRoutes 		= require("./routes/comments"),
 
 // seedDB(); // seed the database
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://127.0.0.1/yelp_camp", {
+// mongoose.connect("mongodb://127.0.0.1/yelp_camp", {
+mongoose.connect("mongodb://ken:laguardia@ds117605.mlab.com:17605/ken_db", {
 	useMongoClient: true,
 });
 app.use(bodyParser.urlencoded({extended: true}));
