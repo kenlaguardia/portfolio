@@ -11,17 +11,22 @@ var express 		= require("express"),
 	User 			= require("./models/user"),
 	seedDB 			= require("./seeds");
 
+// Routes variables
 var commentRoutes 		= require("./routes/comments"),
 	campgroundRoutes 	= require("./routes/campgrounds"),
 	indexRoutes 		= require("./routes/index");
 
 // seedDB(); // seed the database
+
+// mongodb connection
+var url = process.env.DATABASEURL || "mongodb://127.0.0.1/yelp_camp";
+
 mongoose.Promise = global.Promise;
-console.log(process.env.DATABASEURL);
-mongoose.connect(process.env.DATABASEURL, {
-// mongoose.connect("mongodb://ken:laguardia@ds117605.mlab.com:17605/ken_db", {
+mongoose.connect(url, {
 	useMongoClient: true,
 });
+
+// App config
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -40,6 +45,7 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// global variables
 app.use(function (req, res, next) {
 	res.locals.currentUser = req.user;
 	res.locals.error = req.flash("error");
@@ -47,11 +53,12 @@ app.use(function (req, res, next) {
 	next();
 });
 
+// Routes Import
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
-// app.listen("3000", function () {
+// Server Initialization
 app.listen(process.env.PORT, process.env.IP, function () {
 	console.log("Server is Running");
 });
