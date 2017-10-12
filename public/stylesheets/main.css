@@ -1,0 +1,13 @@
+.img-responsive--full{
+	width: 100%;
+}
+.thumnail--mod{
+	padding: 0;
+}
+.caption-full--mod{
+	padding: 9px;
+}
+
+#delete__case{
+	display: inline;
+}
