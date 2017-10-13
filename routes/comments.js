@@ -3,6 +3,7 @@ var express = require("express"),
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 var middlewareObj = require("../middleware");
+var expressSanitizer= require("express-sanitizer");
 
 //=============================
 // Comments
@@ -25,6 +26,7 @@ router.post("/", middlewareObj.isLoggedIn, function (req, res) {
 			req.flash("error", err);
 			res.redirect("/campgrounds");
 		} else{
+			req.body.comment.text = req.sanitize(req.body.comment.text);
 			Comment.create(req.body.comment, function (err, comment) {
 				if (err) {
 					req.flash("error", err);
@@ -57,6 +59,7 @@ router.get("/:comment_id/edit", middlewareObj.checkUserComment, function (req, r
 
 // Update
 router.put("/:comment_id", middlewareObj.checkUserComment, function (req, res) {
+	req.body.comment.text = req.sanitize(req.body.comment.text);
 	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function (err, updatedComment) {
 		if (err) {
 			req.flash("error", err);

@@ -2,6 +2,7 @@ var express = require("express"),
 router 	= express.Router();
 var Campground = require("../models/campground");
 var middlewareObj = require("../middleware");
+var expressSanitizer= require("express-sanitizer");
 
 router.get("/", function (req, res) {
 	Campground.find({}, function(err, allCampgrounds){
@@ -22,6 +23,7 @@ router.post("/", middlewareObj.isLoggedIn, function (req, res){
 		id: req.user._id,
 		username: req.user.username
 	};
+	description = req.sanitize(description);
 	var newCampground = {name: name, image: image, description: description, author: author};
 	// Create a new campground and save to DB
 	Campground.create(newCampground, function (err, newlyCreated) {
@@ -61,6 +63,7 @@ router.get("/:id/edit", middlewareObj.checkUser, function (req, res) {
 
 // Update Campgrounds
 router.put("/:id", middlewareObj.checkUser, function (req, res) {
+	req.body.campground.description = req.sanitize(req.body.campground.description);
 	Campground.findByIdAndUpdate(req.params.id, req.body.campground, function (err, updatedCampground) {
 		if (err) {
 			res.redirect("/campgrounds");

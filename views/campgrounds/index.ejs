@@ -13,7 +13,7 @@
 			<img src="<%= campground.image %>" alt="" class="img-responsive--full">
 			<div class="caption">
 				<h4><%= campground.name %></h4>
-				<p><%= campground.description.substring(0, 100) %></p>
+				<p><%- campground.description.substring(0, 100) %></p>
 			</div>
 			<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
 		</div>
