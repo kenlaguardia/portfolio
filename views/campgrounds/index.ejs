@@ -9,8 +9,8 @@
 	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
 	<% campgrounds.forEach(function (campground) { %>
 	<div class="col-md-4">
-		<div class="thumbnail">
-			<img src="<%= campground.image %>" alt="">
+		<div class="thumbnail thumnail--mod">
+			<img src="<%= campground.image %>" alt="" class="img-responsive--full">
 			<div class="caption">
 				<h4><%= campground.name %></h4>
 				<p><%= campground.description.substring(0, 100) %></p>

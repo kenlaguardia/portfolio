@@ -1,3 +1,13 @@
+/*navbar*/
+.navbar {
+	margin-bottom: 0;
+}
+.header--fix{
+	margin-top: 50px;
+}
+/*landing page*/
+
+
 .img-responsive--full{
 	width: 100%;
 }
@@ -10,4 +20,22 @@
 
 #delete__case{
 	display: inline;
+}
+
+.slider__case {
+	background: url(../images/Camping-in-BC.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: table;
+	height: 100vh;
+	width: 100%;
+}
+.slider__case--vertical--align{
+	display: table-cell;
+	vertical-align: middle;
+	
+}
+.slider__case--color--white{
+	color:white;
+	line-height: 2em;
 }
