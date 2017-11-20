@@ -10,23 +10,28 @@
 	<link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 
-<body>
+<body class="fixed" data-spy="scroll" data-target=".navbar" data-offset="50">
 
 	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+		<div class="">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="true">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="true">
 					<span class="sr-only">Toggle navigation</span> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
 				</button> 
-				<a href="/" class="navbar-brand">Ken Laguardia</a>
+				<a href="/" class="navbar-brand hidden-md hidden-lg">Ken Laguardia</a>
 			</div>
-			<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-2" aria-expanded="true">
-				<ul class="nav navbar-nav navbar-right">
+			<div class="navbar-collapse collapse" id="myScrollspy" aria-expanded="true">
+				<ul class="nav nav-stacked nav-pills nav-tabs" role="tablist">
+					<li><a href="#profile">Profile</a></li>
+					<li><a href="#experiences">Experiences</a></li>
+					<li><a href="#abilities">Abilities</a></li>
+					<li><a href="#portfolio">Portfolio</a></li>
+					<li><a href="#contact">Contact</a></li>
 					<% if(!currentUser){ %>
-					<li><a href="/login">Login</a></li>
+					<li><a href="/login">Login custom</a></li>
 					<li><a href="/register">Sign Up</a></li>
 					<% }else{ %>
 					<li><a href="#">Howdy <%= currentUser.username %></a></li>
@@ -36,7 +41,6 @@
 			</div>
 		</div>
 	</nav>
-
 	<div class="container header--fix">
 		<% if(error && error.length > 0 ){%>
 		<div class="alert alert-danger" role="alert"><%= error %></div>
@@ -44,4 +48,7 @@
 		<% if(success && success.length > 0 ){%>
 		<div class="alert alert-success" role="alert"><%= success %></div>
 		<% } %>
+		<!-- <a href="#profile" class="scroll-down">	
+			<span class="glyphicon glyphicon-chevron-down"></span>
+		</a> -->
 	</div>

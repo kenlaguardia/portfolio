@@ -2,12 +2,18 @@ var express = require("express"),
 router 	= express.Router(),
 passport = require("passport"),
 User = require("../models/user");
-
+var Portfolio = require("../models/portfolio");
+var middlewareObj = require("../middleware");
 // route
 router.get("/", function (req, res) {
-	res.render("landing");
+	Portfolio.find({}, function(err, allPortfolios){
+		if (err) {
+			console.log(err);
+		} else{
+			res.render("landing", {portfolios: allPortfolios});
+		};
+	});
 });
-
 // AUTH ROUTES
 router.get("/register", function (req, res) {
 	res.render("register");
@@ -22,8 +28,8 @@ router.post("/register", function (req, res) {
 			res.redirect("/register");
 		} else {
 			passport.authenticate("local")(req,res, function () {
-				req.flash("success", "Welcome to the yelpcamp " + user.username);
-				res.redirect("/campgrounds")
+				req.flash("success", "Welcome to the Secret page " + user.username);
+				res.redirect("/")
 			});
 		};
 	});
@@ -35,7 +41,7 @@ router.get("/login", function (req, res) {
 });
 
 router.post("/login", passport.authenticate("local", {
-	successRedirect: "/campgrounds",
+	successRedirect: "/",
 	failureRedirect: "/login",
 	failureFlash : true
 }),function (req, res) {
@@ -46,7 +52,7 @@ router.post("/login", passport.authenticate("local", {
 router.get("/logout", function (req, res) {
 	req.logout();
 	req.flash("success", "Successfully logged out");
-	res.redirect("/campgrounds");
+	res.redirect("/");
 });
 
 module.exports = router;

@@ -1,15 +1,15 @@
-var Campground = require("../models/campground");
+var Portfolio = require("../models/portfolio");
 var Comment = require("../models/comment");
 var middlewareObj = {};
 
 // Check User 
 middlewareObj.checkUser = function (req, res, next) {
 	if (req.isAuthenticated()) {
-		Campground.findById(req.params.id, function (err, foundCampground) {
+		Portfolio.findById(req.params.id, function (err, foundPortfolio) {
 			if (err) {
-				res.redirect("/campgrounds");
+				res.redirect("/portfolios");
 			} else{
-				if (foundCampground.author.id.equals(req.user._id)) {
+				if (foundPortfolio.author.id.equals(req.user._id)) {
 					next();
 				} else{
 					req.flash("error", "You dont have permission to do that!");
@@ -38,7 +38,7 @@ middlewareObj.checkUserComment  = function (req, res, next) {
 		Comment.findById(req.params.comment_id, function (err, foundComment) {
 			if (err) {
 				req.flash("error", "You dont have permission to do that!");
-				res.redirect("/campgrounds");
+				res.redirect("/");
 			} else{
 				if (foundComment.author.id.equals(req.user._id)) {
 					next();

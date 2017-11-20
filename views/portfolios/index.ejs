@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+<div class="container">
+	<header class="jumbotron">
+		<h1>Ken</h1>
+		<p>Subtitle</p>
+		<a href="/portfolios/new" class="btn btn-primary btn-large">Add new portfolios</a>
+	</header>
+	
+	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+	<% portfolios.forEach(function (portfolio) { %>
+	<div class="col-md-4">
+		<div class="thumbnail thumnail--mod">
+			<img src="<%= portfolio.image %>" alt="" class="img-responsive--full">
+			<div class="caption">
+				<h4><%= portfolio.name %></h4>
+				<p><%- portfolio.description.substring(0, 100) %></p>
+			</div>
+			<a href="/portfolios/<%= portfolio._id %>" class="btn btn-primary">More Info</a>
+		</div>
+	</div>
+	<% }); %>
+	</div>
+</div>
+
+<% include ../partials/footer %>

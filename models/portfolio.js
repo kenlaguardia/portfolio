@@ -1,5 +1,5 @@
 var mongoose 		= require("mongoose"),
-campgroundSchema	= mongoose.Schema({
+portfolioSchema	= mongoose.Schema({
 	name: String,
 	image: String,
 	description: String,
@@ -18,4 +18,4 @@ campgroundSchema	= mongoose.Schema({
 	]
 });
 
-module.exports = mongoose.model("Campground", campgroundSchema);
+module.exports = mongoose.model("Portfolio", portfolioSchema);

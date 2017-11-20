@@ -7,20 +7,20 @@ var express 		= require("express"),
 	passport		= require("passport"),
 	localStrategy 	= require("passport-local"),
 	methodOverride	= require("method-override"),
-	Campground 		= require("./models/campground"),
+	Portfolio 		= require("./models/portfolio"),
 	Comment 		= require("./models/comment"),
-	User 			= require("./models/user"),
-	seedDB 			= require("./seeds");
+	User 			= require("./models/user");
+	// seedDB 			= require("./seeds");
 
 // Routes variables
 var commentRoutes 		= require("./routes/comments"),
-	campgroundRoutes 	= require("./routes/campgrounds"),
+	portfolioRoutes 	= require("./routes/portfolios"),
 	indexRoutes 		= require("./routes/index");
 
 // seedDB(); // seed the database
 
 // mongodb connection
-var url = process.env.DATABASEURL || "mongodb://127.0.0.1/yelp_camp";
+var url = process.env.DATABASEURL || "mongodb://127.0.0.1/kenlag_db";
 
 mongoose.Promise = global.Promise;
 mongoose.connect(url, {
@@ -57,8 +57,12 @@ app.use(function (req, res, next) {
 
 // Routes Import
 app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+
+
+// Routes Import
+app.use("/portfolios", portfolioRoutes);
+app.use("/portfolios/:id/comments", commentRoutes);
+
 
 // Server Initialization
 app.listen(process.env.PORT, process.env.IP, function () {

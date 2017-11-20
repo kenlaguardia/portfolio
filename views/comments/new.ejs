@@ -1,9 +1,9 @@
 <% include ../partials/header %>
 <div class="container">
 	<div class="row">
-		<h1 style="text-align:center;">Add New Comments to <%= campground.title %></h1>
+		<h1 style="text-align:center;">Add New Comments to <%= portfolio.title %></h1>
 		<div style="width:30%; margin: 25px auto;">
-			<form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+			<form action="/portfolios/<%= portfolio._id %>/comments" method="POST">
 				<div class="form-group">
 					<textarea class="form-control" name="comment[text]" id="" cols="30" rows="10" placeholder="Comment"></textarea>
 				</div>
@@ -11,7 +11,7 @@
 					<input class="btn btn-primary btn-lg btn-block"type="submit" value="Submit">
 				</div>
 			</form>
-			<a href="/campgrounds/<%= campground._id %>" class="btn btn-default btn-large">Go Back</a>
+			<a href="/portfolios/<%= portfolio._id %>" class="btn btn-default btn-large">Go Back</a>
 		</div>
 		
 	</div>

@@ -3,7 +3,7 @@
 	<div class="row">
 		<h1 style="text-align:center;">Edit Comment</h1>
 		<div style="width:30%; margin: 25px auto;">
-			<form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+			<form action="/portfolios/<%= portfolio_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
 				<div class="form-group">
 					<textarea class="form-control" name="comment[text]" id="" cols="30" rows="10" placeholder="Comment">
 						<%= comment.text %>
@@ -13,7 +13,7 @@
 					<input class="btn btn-primary btn-lg btn-block"type="submit" value="Submit">
 				</div>
 			</form>
-			<a href="/campgrounds/<%= campground_id %>" class="btn btn-default btn-large">Go Back</a>
+			<a href="/portfolios/<%= portfolio_id %>" class="btn btn-default btn-large">Go Back</a>
 		</div>
 		
 	</div>
