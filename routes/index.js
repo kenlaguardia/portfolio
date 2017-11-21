@@ -15,25 +15,25 @@ router.get("/", function (req, res) {
 	});
 });
 // AUTH ROUTES
-router.get("/register", function (req, res) {
-	res.render("register");
-});
+// router.get("/register", function (req, res) {
+// 	res.render("register");
+// });
 
-router.post("/register", function (req, res) {
-	var newUser = new User({username: req.body.username});
-	User.register(newUser, req.body.password, function (err, user) {
-		if (err) {
-			req.flash("error", err.message);
-			// req.flash("messages", { "error" : err.message });
-			res.redirect("/register");
-		} else {
-			passport.authenticate("local")(req,res, function () {
-				req.flash("success", "Welcome to the Secret page " + user.username);
-				res.redirect("/")
-			});
-		};
-	});
-});
+// router.post("/register", function (req, res) {
+// 	var newUser = new User({username: req.body.username});
+// 	User.register(newUser, req.body.password, function (err, user) {
+// 		if (err) {
+// 			req.flash("error", err.message);
+// 			// req.flash("messages", { "error" : err.message });
+// 			res.redirect("/register");
+// 		} else {
+// 			passport.authenticate("local")(req,res, function () {
+// 				req.flash("success", "Welcome to the Secret page " + user.username);
+// 				res.redirect("/")
+// 			});
+// 		};
+// 	});
+// });
 
 // Login Route
 router.get("/login", function (req, res) {
@@ -55,4 +55,7 @@ router.get("/logout", function (req, res) {
 	res.redirect("/");
 });
 
+router.get("/*", function (req, res){
+	res.send("Error 404");
+});
 module.exports = router;
