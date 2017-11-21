@@ -65,6 +65,7 @@ app.use("/portfolios/:id/comments", commentRoutes);
 
 
 // Server Initialization
+console.log(process.env.PORT);
 app.listen(process.env.PORT, process.env.IP, function () {
 	console.log("Server is Running");
 });
