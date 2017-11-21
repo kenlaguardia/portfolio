@@ -62,7 +62,8 @@ app.use(indexRoutes);
 // Routes Import
 app.use("/portfolios", portfolioRoutes);
 app.use("/portfolios/:id/comments", commentRoutes);
-
+app.use(express.static('static'));
+app.get('/health-check', (req,res) => res.sendStatus(200));
 
 // Server Initialization
 app.listen(80, process.env.IP, function () {
