@@ -18,7 +18,11 @@ var commentRoutes 		= require("./routes/comments"),
 	indexRoutes 		= require("./routes/index");
 
 // seedDB(); // seed the database
+var http = require('http');
 
+// These could (should) be set as env vars.
+var port = process.env.PORT || 5000;
+var host = process.env.HOST || 'localhost';
 // mongodb connection
 var url = process.env.DATABASEURL || "mongodb://127.0.0.1/kenlag_db";
 
@@ -66,6 +70,8 @@ app.use(express.static('static'));
 app.get('/health-check', (req,res) => res.sendStatus(200));
 
 // Server Initialization
-app.listen(80, process.env.IP, function () {
+console.log(port);
+console.log(host);
+app.listen(port, host, function () {
 	console.log("Server is Running");
 });
