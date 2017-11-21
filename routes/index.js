@@ -55,7 +55,5 @@ router.get("/logout", function (req, res) {
 	res.redirect("/");
 });
 
-router.get("/*", function (req, res){
-	res.send("Error 404");
-});
+
 module.exports = router;
