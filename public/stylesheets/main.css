@@ -227,9 +227,11 @@ body{
 }
 
 /*.scroll-down { height: 80px; width: 110px; display: block; position: absolute; bottom: 0px; right: 5%; background-color: #222222; text-align: center; z-index: 6; }*/
-/*.scroll-down .glyphicon { 
+.scroll-down{
+  position: relative;
+}
+.scroll-down .fa { 
   color: #FFFFFF; 
-  font-size: 30px; 
   padding-right: 2px; 
   padding-top: 20px; 
   animation-name: wiggle;
@@ -237,11 +239,14 @@ body{
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: normal;
-}*/
-/*.scroll-down:hover .glyphicon { padding-top: 25px; }*/
+  position: absolute;
+  left: 0;
+  right:0;
+}
+.scroll-down:hover .fa { padding-top: 25px; }
 @keyframes wiggle {
   0% {
-    padding-top: 20px;
+    padding-top: 10px;
   }
 
   50% {
@@ -249,7 +254,7 @@ body{
   }
 
   100% {
-    padding-top: 20px;
+    padding-top: 10px;
   }
 }
 
