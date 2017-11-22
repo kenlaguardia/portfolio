@@ -8,10 +8,10 @@
 					<p><strong><%= portfolio.name %></strong></p>
 					<p class="list-group-item-text"><%- portfolio.description%></p>
 				</div>
-				<div class="list-group-item">
+				<!-- <div class="list-group-item">
 					<h4 class="list-group-item-heading">Project Date</h4>
-					<p><%= portfolio.projectdate.toLocaleDateString('en-US'); %></p>
-				</div>
+					<p><%= portfolio.projectdate.toLocaleDateString('en-US','year, month'); %></p>
+				</div> -->
 				<div class="list-group-item">
 					<h4 class="list-group-item-heading">Coffee Consumed</h4>
 					<p><% for (var i = 0; i < portfolio.coffee; i++) { %>
