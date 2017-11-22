@@ -1,14 +1,26 @@
 <% include ../partials/header %>
 <div class="container">
 	<div class="row">
-		<h1 style="text-align:center;">Create a New Portfolios</h1>
-		<div style="width:30%; margin: 25px auto;">
+		<h1 style="text-align:center;">Create a New Portfolio</h1>
+		<div style="width:60%; margin: 25px auto;">
 			<form action="/portfolios" method="POST">
 				<div class="form-group">
 					<input class="form-control" type="text" name="name" id="" placeholder="Name">
 				</div>
 				<div class="form-group">
 					<input class="form-control" type="text" name="image" id="" placeholder="Image URL">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="date" name="date" id="" placeholder="Date">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="number" name="coffee" id="" placeholder="Coffee Consumed">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="tags" id="" placeholder="Tags">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="siteurl" id="" placeholder="Site URL">
 				</div>
 				<div class="form-group">
 					<textarea class="form-control" name="description" id="" cols="30" rows="10" placeholder="Description"></textarea>

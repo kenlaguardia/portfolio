@@ -19,12 +19,16 @@ router.post("/", middlewareObj.isLoggedIn, function (req, res){
 	var name = req.body.name;
 	var image = req.body.image;
 	var description = req.body.description;
+	var projectdate = req.body.date;
+	var coffee = req.body.coffee;
+	var tags = req.body.tags;
+	var siteurl = req.body.siteurl;
 	var author = {
 		id: req.user._id,
 		username: req.user.username
 	};
 	description = req.sanitize(description);
-	var newPortfolio = {name: name, image: image, description: description, author: author};
+	var newPortfolio = {name: name, image: image, description: description, author: author, projectdate:projectdate, coffee:coffee, tags:tags,siteurl:siteurl};
 	// Create a new Portfolio and save to DB
 	Portfolio.create(newPortfolio, function (err, newlyCreated) {
 		if (err) {

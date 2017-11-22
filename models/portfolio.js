@@ -3,6 +3,10 @@ portfolioSchema	= mongoose.Schema({
 	name: String,
 	image: String,
 	description: String,
+	projectdate: Date,
+	coffee: Number,
+	tags: String,
+	siteurl: String,
 	author: {
 		id: {
 			type: mongoose.Schema.Types.ObjectId,

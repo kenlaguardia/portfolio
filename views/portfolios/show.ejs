@@ -1,27 +1,44 @@
 <% include ../partials/header %>
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="list-group">
-				<a href="#" class="list-group-item active">
-					Cras justo odio
-				</a>
-				<a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-				<a href="#" class="list-group-item">Morbi leo risus</a>
-				<a href="#" class="list-group-item">Porta ac consectetur ac</a>
-				<a href="#" class="list-group-item">Vestibulum at eros</a>
+				<div class="list-group-item">
+					<h4 class="list-group-item-heading">About Project</h4>
+					<p><strong><%= portfolio.name %></strong></p>
+					<p class="list-group-item-text"><%- portfolio.description%></p>
+				</div>
+				<div class="list-group-item">
+					<h4 class="list-group-item-heading">Project Date</h4>
+					<p><%= portfolio.projectdate.toLocaleDateString('en-US'); %></p>
+				</div>
+				<div class="list-group-item">
+					<h4 class="list-group-item-heading">Coffee Consumed</h4>
+					<p><% for (var i = 0; i < portfolio.coffee; i++) { %>
+						<i class="fa fa-coffee"></i>
+					<%}%></p>
+					<small class="pull-right">Liters</small>
+					<div class="clearfix"></div>
+				</div>
+				<div class="list-group-item">
+					<h4 class="list-group-item-heading">Tags</h4>
+					<p><%= portfolio.tags %></p>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-9">
 			<div class="thumbnail thumnail--mod">
-				<img src="<%= portfolio.image %>" alt="" class="img-responsive img-responsive--full">
+				<div class="portfolio--img">
+					<img src="<%= portfolio.image %>" alt="" class="img-responsive--full">
+				</div>
 				<div class="caption-full caption-full--mod">
-					<h4 class="pull-right">$9.00/night</h4>
-					<h4 class=""><a href="#"><%= portfolio.name %></a></h4>
+					<p class="text-center"><a class="btn btn-primary btn-lg" target="_blank" href="<%= portfolio.siteurl %>">Launch Site</a></p>
+					<!-- <h4 class=""><a href="#"><%= portfolio.name %></a></h4>
 					<p><%- portfolio.description%></p>
 					<p>
 						<em>Submitted By: <%= portfolio.author.username %></em>
-					</p>
+					</p> -->
+					<div class="clearfix"></div>
 					<% if(currentUser && portfolio.author.id.equals(currentUser._id)){ %>
 					<a href="/portfolios/<%= portfolio._id %>/edit" class="btn btn-warning">Update!</a>
 					<form id="delete__case" action="/portfolios/<%= portfolio._id %>?_method=DELETE" method="POST">
@@ -31,7 +48,7 @@
 					
 				</div>
 				<div class="well">
-					<div class="text-right">
+					<div class="text-left">
 						<p><a href="/portfolios/<%= portfolio.id %>/comments/new" class="btn btn-primary">Add new Comment</a></p>
 					</div>
 					<hr>

@@ -603,12 +603,12 @@
 			<% portfolios.forEach(function (portfolio) { %>
 			<div class="col-md-4">
 				<div class="thumbnail thumnail--mod">
-					<img src="<%= portfolio.image %>" alt="" class="img-responsive--full">
+					<a href="/portfolios/<%= portfolio._id %>" class=""><div class="img__placeholder" style="background: url('<%= portfolio.image %>')"></div>
 					<div class="caption">
 						<h4><%= portfolio.name %></h4>
 						<p><%- portfolio.description.substring(0, 100) %></p>
 					</div>
-					<p><a href="/portfolios/<%= portfolio._id %>" class="btn btn-primary">More Info</a></p>
+					<p>More Info</p></a>
 				</div>
 			</div>
 			<% }); %>

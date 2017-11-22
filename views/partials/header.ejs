@@ -10,9 +10,9 @@
 	<link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 
-<body>
+<body class="inner">
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="true">
@@ -25,6 +25,11 @@
 			</div>
 			<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-2" aria-expanded="true">
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/#profile">Profile</a></li>
+					<li><a href="/#experiences">Experiences</a></li>
+					<li><a href="/#abilities">Abilities</a></li>
+					<li><a href="/#portfolio">Portfolio</a></li>
+					<li><a href="/#contact">Contact</a></li>
 					<% if(!currentUser){ %>
 					<li><a href="/login">Login</a></li>
 					<!-- <li><a href="/register">Sign Up</a></li> -->
