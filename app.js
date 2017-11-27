@@ -67,7 +67,8 @@ app.use(indexRoutes);
 app.use("/portfolios", portfolioRoutes);
 app.use("/portfolios/:id/comments", commentRoutes);
 app.use(express.static('static'));
-app.get('/health-check', (req,res) => res.sendStatus(200));
+// app.get('/health-check', (req,res) => res.sendStatus(200));
+
 app.get("*", function (req, res){
 	res.render("404");
 });
